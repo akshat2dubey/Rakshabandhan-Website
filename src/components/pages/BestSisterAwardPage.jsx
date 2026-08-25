@@ -5,6 +5,39 @@ import { CertificateSeal } from '../ui/ScrapbookDecorations';
 import { scrapbookConfig } from '../../config/scrapbookData';
 import { sounds } from '../../utils/audio';
 
+/**
+ * Stylish Executive Calligraphy Signature Component
+ */
+const StylishSignature = ({ className = "w-28 h-10" }) => {
+  return (
+    <div className={`relative inline-block ${className}`}>
+      <svg viewBox="0 0 140 45" className="w-full h-full overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* Main Signature Fluent Stroke */}
+        <path
+          d="M 8 28 C 15 10, 22 2, 26 14 C 29 24, 32 36, 36 22 C 40 10, 48 8, 54 18 C 58 26, 62 12, 70 16 C 76 20, 82 8, 88 15 C 94 22, 98 12, 106 14 C 114 16, 122 8, 130 12"
+          stroke="#7F1D1D"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        {/* Signature Swash & Loop */}
+        <path
+          d="M 18 16 C 8 32, 12 42, 38 38 C 70 34, 110 32, 136 34"
+          stroke="#7F1D1D"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+        />
+        {/* Dynamic Pen Dot */}
+        <circle cx="134" cy="22" r="1.5" fill="#7F1D1D" />
+      </svg>
+      {/* Calligraphy Overlay Name */}
+      <span className="absolute inset-0 flex items-center justify-center font-greatVibes text-xl sm:text-2xl text-[#7F1D1D] transform -rotate-3 select-none pointer-events-none opacity-90">
+        Akshat
+      </span>
+    </div>
+  );
+};
+
 export const BestSisterAwardPage = ({ onBack }) => {
   const { awardPage, recipientName } = scrapbookConfig;
   const certificateRef = useRef(null);
@@ -117,17 +150,17 @@ export const BestSisterAwardPage = ({ onBack }) => {
             </p>
           </div>
 
-          {/* Right: Signature */}
-          <div className="text-right">
-            <p className="font-greatVibes text-base text-[#991B1B]">With Love</p>
-            <div className="w-20 h-px bg-[#B45309]/50 my-0.5 ml-auto" />
+          {/* Right: Stylish Signature */}
+          <div className="text-right flex flex-col items-end">
+            <StylishSignature className="w-24 sm:w-28 h-8 sm:h-9" />
+            <div className="w-24 h-px bg-[#B45309]/50 my-0.5" />
             <p className="font-cinzel text-[9px] uppercase tracking-wider text-neutral-600 font-semibold">
               OFFICIAL SIGNATURE
             </p>
           </div>
         </div>
 
-        {/* Discreet Tap Hint (Appears on hover or touch) */}
+        {/* Discreet Tap Hint */}
         <div className="mt-3">
           <span className="font-montserrat text-[10px] font-semibold text-amber-800/80 bg-amber-100/70 border border-amber-300/50 px-2.5 py-0.5 rounded-full inline-block">
             {isDownloading ? "Generating Image..." : "📥 Tap certificate to download"}
@@ -150,7 +183,7 @@ export const BestSisterAwardPage = ({ onBack }) => {
         )}
       </AnimatePresence>
 
-      {/* Back to Gifts Navigation Button (No extra download button) */}
+      {/* Back to Gifts Navigation Button */}
       <div className="w-full pt-2 flex justify-center pb-2 z-20">
         <button
           onClick={handleBack}
