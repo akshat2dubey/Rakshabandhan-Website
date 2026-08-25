@@ -4,7 +4,7 @@ import { GiftBoxItem } from '../ui/ScrapbookDecorations';
 import { scrapbookConfig } from '../../config/scrapbookData';
 import { sounds } from '../../utils/audio';
 
-export const GiftSectionPage = ({ onSelectGift, openedGifts = [] }) => {
+export const GiftSectionPage = ({ onSelectGift, onBack, openedGifts = [] }) => {
   const { giftsSection } = scrapbookConfig;
 
   const handleGiftClick = (gift) => {
@@ -47,11 +47,23 @@ export const GiftSectionPage = ({ onSelectGift, openedGifts = [] }) => {
         })}
       </div>
 
-      {/* Bottom Spacer */}
-      <div className="w-full pb-4 text-center">
-        <span className="font-handwriting text-sm text-neutral-500">
+      {/* Back to Memories Navigation Button */}
+      <div className="w-full pb-3 flex flex-col items-center gap-2 z-20">
+        <span className="font-handwriting text-xs text-neutral-500">
           Tap any gift box to open ✨
         </span>
+
+        {onBack && (
+          <button
+            onClick={() => {
+              sounds.playPageTurn();
+              onBack();
+            }}
+            className="w-full max-w-[220px] py-2.5 px-4 rounded-full bg-neutral-800 hover:bg-neutral-700 active:scale-95 text-white font-patrick text-base font-bold shadow-md transition-all cursor-pointer"
+          >
+            ⬅ Back to Memories 📸
+          </button>
+        )}
       </div>
     </div>
   );

@@ -90,6 +90,7 @@ export function App() {
         <GiftSectionPage
           openedGifts={openedGifts}
           onSelectGift={handleSelectGift}
+          onBack={() => setCurrentPage(PAGE_KEYS.MEMORIES)}
         />
       )}
 
