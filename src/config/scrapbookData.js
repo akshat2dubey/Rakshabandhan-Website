@@ -7,7 +7,7 @@ import { referenceAssets } from './referenceAssets';
 export const scrapbookConfig = {
   // 1. Customizable Names
   recipientName: "Khushi didi",
-  senderName: "Shin-chan",
+  senderName: "Bhai Om",
   relationshipTitle: "Best Sister",
 
   // 2. Opening Page (0.0s - 5.5s)
@@ -178,7 +178,7 @@ export const scrapbookConfig = {
       "No matter how much time passes, you will always be my absolute favorite person in the world.",
       "With all my love & hugs,"
     ],
-    signature: "Forever Yours ❤️",
+    signature: "Yours beloved Bhai Om ❤️",
     backButtonText: "Back to Gifts 🎁"
   },
 

@@ -32,7 +32,7 @@ const StylishSignature = ({ className = "w-28 h-10" }) => {
       </svg>
       {/* Calligraphy Overlay Name */}
       <span className="absolute inset-0 flex items-center justify-center font-greatVibes text-xl sm:text-2xl text-[#7F1D1D] transform -rotate-3 select-none pointer-events-none opacity-90">
-        Akshat
+        Om
       </span>
     </div>
   );
