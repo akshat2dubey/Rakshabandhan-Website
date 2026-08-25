@@ -6,7 +6,7 @@ import { referenceAssets } from './referenceAssets';
 
 export const scrapbookConfig = {
   // 1. Customizable Names
-  recipientName: "Sister",
+  recipientName: "Khushi didi",
   senderName: "Shin-chan",
   relationshipTitle: "Best Sister",
 
@@ -173,7 +173,7 @@ export const scrapbookConfig = {
   letterPage: {
     title: "A Little Note...",
     paragraphs: [
-      "Dear Sister,",
+      "Dear Khushi didi,",
       "Thank you for always being there, making every single day brighter with your smiles and chaotic energy.",
       "No matter how much time passes, you will always be my absolute favorite person in the world.",
       "With all my love & hugs,"
