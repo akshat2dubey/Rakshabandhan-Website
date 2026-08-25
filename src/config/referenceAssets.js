@@ -12,15 +12,16 @@ export const referenceAssets = {
   shinchanAward: "/assets/shinchan/shinchan-award.png",
   shinchanCenter: "/assets/shinchan/shinchan-center.png",
   shinchanSparkle: "/assets/shinchan/shinchan-sparkle.png",
+  shinchanShy: "/assets/shinchan/shinchan-shy.png",
 
   // Sidekick Stickers
   shiro: "/assets/shinchan/shiro.png",
   chocobi: "/assets/shinchan/chocobi.png",
 
   // Default Memory Photos (Stable Identifiable Assets)
-  memory01: "/assets/photos/user-memory-01-childhood.png",
-  memory02: "/assets/photos/user-memory-02-traditional.png",
-  memory03: "/assets/photos/user-memory-03-terrace.png",
-  memory04: "/assets/photos/user-memory-04-chilling.png",
-  memory05: "/assets/photos/user-memory-05-cute.png"
+  memory01: "/assets/photos/crop-01.png",
+  memory02: "/assets/photos/crop-02.png",
+  memory03: "/assets/photos/crop-03.png",
+  memory04: "/assets/photos/crop-04.png",
+  memory05: "/assets/photos/crop-05.png"
 };

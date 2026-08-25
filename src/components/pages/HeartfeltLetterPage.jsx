@@ -41,19 +41,19 @@ export const HeartfeltLetterPage = ({ onBack }) => {
           ))}
         </div>
 
-        {/* Signature - Replaced 'Forever Yours' with 'Yours beloved Bhai Om' */}
+        {/* Signature */}
         <div className="mt-5 pt-2 text-right">
           <p className="font-patrick text-lg sm:text-xl font-bold text-[#C92A2A] tracking-wide">
             {letterPage.signature}
           </p>
         </div>
 
-        {/* Peeking Shin-chan Sticker Bottom Left */}
+        {/* Shy Blushing Shin-chan Sticker Bottom Left */}
         <div className="absolute -bottom-3 -left-3 pointer-events-none">
           <img 
-            src={referenceAssets.shinchanOpening} 
-            alt="Shin-chan" 
-            className="w-20 h-20 sm:w-24 sm:h-24 object-contain filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)]"
+            src={referenceAssets.shinchanShy} 
+            alt="Shy Shin-chan" 
+            className="w-22 h-22 sm:w-26 sm:h-26 object-contain filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.18)]"
           />
         </div>
       </motion.div>
