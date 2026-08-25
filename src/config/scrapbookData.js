@@ -36,37 +36,37 @@ export const scrapbookConfig = {
     photos: [
       {
         id: "memory-01",
-        src: "/assets/photos/user-memory-01-childhood.png",
+        src: "/assets/photos/crop-01.png",
         caption: "Where it all started ✨",
-        rotation: "-4deg",
+        rotation: "-3deg",
         tapeColor: "yellow"
       },
       {
         id: "memory-02",
-        src: "/assets/photos/user-memory-02-traditional.png",
+        src: "/assets/photos/crop-02.png",
         caption: "Partners in Crime 🕶️",
-        rotation: "4deg",
+        rotation: "3deg",
         tapeColor: "pink"
       },
       {
         id: "memory-03",
-        src: "/assets/photos/user-memory-03-terrace.png",
+        src: "/assets/photos/crop-03.png",
         caption: "Forever Smiling 💖",
-        rotation: "-3deg",
+        rotation: "-2deg",
         tapeColor: "mint"
       },
       {
         id: "memory-04",
-        src: "/assets/photos/user-memory-04-chilling.png",
+        src: "/assets/photos/crop-04.png",
         caption: "Unmatched Chaos 🍕",
-        rotation: "5deg",
+        rotation: "2deg",
         tapeColor: "red"
       },
       {
         id: "memory-05",
-        src: "/assets/photos/user-memory-05-cute.png",
+        src: "/assets/photos/crop-05.png",
         caption: "Cutest Sister Ever 🌸",
-        rotation: "-4deg",
+        rotation: "-2deg",
         tapeColor: "yellow"
       }
     ],
