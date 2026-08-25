@@ -35,15 +35,15 @@ export const HeartfeltLetterPage = ({ onBack }) => {
         {/* Handwritten Paragraphs */}
         <div className="space-y-3 font-patrick text-base sm:text-lg text-neutral-800 leading-relaxed">
           {letterPage.paragraphs.map((p, idx) => (
-            <p key={idx} className={idx === 0 ? "font-bold text-red-800 text-lg" : ""}>
+            <p key={idx} className={idx === 0 ? "font-bold text-red-800 text-lg sm:text-xl" : ""}>
               {p}
             </p>
           ))}
         </div>
 
-        {/* Signature */}
-        <div className="mt-4 pt-2 text-right">
-          <p className="font-abril text-lg text-[#C92A2A]">
+        {/* Signature - Replaced 'Forever Yours' with 'Yours beloved Bhai Om' */}
+        <div className="mt-5 pt-2 text-right">
+          <p className="font-patrick text-lg sm:text-xl font-bold text-[#C92A2A] tracking-wide">
             {letterPage.signature}
           </p>
         </div>
