@@ -2,10 +2,6 @@ import { referenceAssets } from './referenceAssets';
 
 /**
  * USER CUSTOMIZABLE CONFIGURATION & REPLACEMENT MAP
- * 
- * When providing replacements:
- * - Update recipientName, senderName, or specific memory IDs below (memory-01, memory-02, etc.).
- * - Layouts, animations, borders, and all Shin-chan visuals will remain untouched.
  */
 
 export const scrapbookConfig = {
@@ -40,35 +36,38 @@ export const scrapbookConfig = {
     photos: [
       {
         id: "memory-01",
-        src: referenceAssets.memory01,
-        caption: "Summer '88 🍦",
-        rotation: "-6deg",
-        tapeColor: "yellow",
-        positionClass: "top-2 left-2 w-[48%]"
+        src: "/assets/photos/user-memory-01-childhood.png",
+        caption: "Where it all started ✨",
+        rotation: "-4deg",
+        tapeColor: "yellow"
       },
       {
         id: "memory-02",
-        src: referenceAssets.memory02,
-        caption: "Sarah & Leo Biking 🚲",
-        rotation: "5deg",
-        tapeColor: "pink",
-        positionClass: "top-8 right-2 w-[48%]"
+        src: "/assets/photos/user-memory-02-traditional.png",
+        caption: "Partners in Crime 🕶️",
+        rotation: "4deg",
+        tapeColor: "pink"
       },
       {
         id: "memory-03",
-        src: referenceAssets.memory03,
-        caption: "Silly Siblings 🕶️",
+        src: "/assets/photos/user-memory-03-terrace.png",
+        caption: "Forever Smiling 💖",
         rotation: "-3deg",
-        tapeColor: "mint",
-        positionClass: "bottom-16 left-3 w-[47%]"
+        tapeColor: "mint"
       },
       {
         id: "memory-04",
-        src: referenceAssets.memory04,
-        caption: "Autumn Cozy '93 🍂",
-        rotation: "4deg",
-        tapeColor: "red",
-        positionClass: "bottom-12 right-2 w-[49%]"
+        src: "/assets/photos/user-memory-04-chilling.png",
+        caption: "Unmatched Chaos 🍕",
+        rotation: "5deg",
+        tapeColor: "red"
+      },
+      {
+        id: "memory-05",
+        src: "/assets/photos/user-memory-05-cute.png",
+        caption: "Cutest Sister Ever 🌸",
+        rotation: "-4deg",
+        tapeColor: "yellow"
       }
     ],
     nextButtonText: "Next ➔"
@@ -122,48 +121,42 @@ export const scrapbookConfig = {
         text: "google maps",
         top: "8%",
         left: "6%",
-        rotation: "-8deg",
-        arrowPath: "M 40 25 Q 70 50 85 85"
+        rotation: "-8deg"
       },
       {
         id: "phrase-2",
         text: "my lifeline",
         top: "8%",
         right: "6%",
-        rotation: "6deg",
-        arrowPath: "M -10 25 Q -40 50 -60 85"
+        rotation: "6deg"
       },
       {
         id: "phrase-3",
         text: "food/clothes stealer",
         top: "34%",
         left: "3%",
-        rotation: "4deg",
-        arrowPath: "M 60 15 Q 90 25 110 40"
+        rotation: "4deg"
       },
       {
         id: "phrase-4",
         text: "bank account",
         top: "34%",
         right: "3%",
-        rotation: "-5deg",
-        arrowPath: "M -10 15 Q -40 25 -65 40"
+        rotation: "-5deg"
       },
       {
         id: "phrase-5",
         text: "crybaby",
         bottom: "22%",
         left: "8%",
-        rotation: "-6deg",
-        arrowPath: "M 35 -5 Q 60 -30 75 -50"
+        rotation: "-6deg"
       },
       {
         id: "phrase-6",
         text: "entertainment",
         bottom: "22%",
         right: "6%",
-        rotation: "7deg",
-        arrowPath: "M -5 -5 Q -30 -30 -50 -50"
+        rotation: "7deg"
       },
       {
         id: "phrase-7",
@@ -171,8 +164,7 @@ export const scrapbookConfig = {
         bottom: "6%",
         left: "50%",
         transform: "translateX(-50%)",
-        rotation: "0deg",
-        arrowPath: "M 20 -5 Q 20 -20 20 -35"
+        rotation: "0deg"
       }
     ]
   },
