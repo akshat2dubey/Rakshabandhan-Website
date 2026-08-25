@@ -1,12 +1,44 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { referenceAssets } from '../../config/referenceAssets';
-import { scrapbookConfig } from '../../config/scrapbookData';
+import React, { useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import html2canvas from 'html2canvas';
 import { CertificateSeal } from '../ui/ScrapbookDecorations';
+import { scrapbookConfig } from '../../config/scrapbookData';
 import { sounds } from '../../utils/audio';
 
 export const BestSisterAwardPage = ({ onBack }) => {
   const { awardPage, recipientName } = scrapbookConfig;
+  const certificateRef = useRef(null);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  const handleDownloadCertificate = async () => {
+    if (isDownloading || !certificateRef.current) return;
+    try {
+      setIsDownloading(true);
+      sounds.playTada();
+
+      // High resolution capture
+      const canvas = await html2canvas(certificateRef.current, {
+        scale: 3,
+        useCORS: true,
+        backgroundColor: '#FFFDF9',
+        logging: false
+      });
+
+      const dataUrl = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.download = `Best-Sister-Award-${recipientName || 'Certificate'}.png`;
+      link.href = dataUrl;
+      link.click();
+
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 2500);
+    } catch (err) {
+      console.error('Error downloading certificate:', err);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
 
   const handleBack = () => {
     sounds.playPageTurn();
@@ -14,62 +46,111 @@ export const BestSisterAwardPage = ({ onBack }) => {
   };
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-3 sm:p-5 select-none overflow-y-auto no-scrollbar">
-      {/* Certificate Card on Paper */}
+    <div className="relative w-full h-full flex flex-col justify-between p-2 sm:p-4 select-none overflow-y-auto no-scrollbar">
+      
+      {/* Interactive Printable Certificate (Tapping downloads image) */}
       <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
+        ref={certificateRef}
+        onClick={handleDownloadCertificate}
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
+        initial={{ scale: 0.92, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="relative my-auto w-full bg-[#FFFDF8] rounded-2xl p-4 sm:p-5 border-4 border-double border-amber-600 shadow-md text-center"
+        className="relative my-auto w-full bg-[#FFFDF9] rounded-xl p-4 sm:p-5 border-[6px] border-double border-[#92400E] shadow-certificate text-center cursor-pointer transition-shadow hover:shadow-2xl overflow-hidden group"
+        title="Touch certificate to download"
       >
-        {/* Certificate Seal */}
-        <div className="absolute -top-5 -right-2 z-20">
-          <CertificateSeal className="w-16 h-20 sm:w-18 sm:h-22" />
+        {/* Subtle Decorative Guilloche Border Line */}
+        <div className="absolute inset-1.5 border border-[#D97706]/40 rounded-lg pointer-events-none" />
+        <div className="absolute inset-2.5 border border-dashed border-[#B45309]/30 rounded-md pointer-events-none" />
+
+        {/* Vintage Filigree Corner Ornaments */}
+        <div className="absolute top-2 left-2 text-[#B45309] text-xs pointer-events-none font-serif">❧</div>
+        <div className="absolute top-2 right-2 text-[#B45309] text-xs pointer-events-none font-serif transform scale-x-[-1]">❧</div>
+        <div className="absolute bottom-2 left-2 text-[#B45309] text-xs pointer-events-none font-serif transform scale-y-[-1]">❧</div>
+        <div className="absolute bottom-2 right-2 text-[#B45309] text-xs pointer-events-none font-serif transform scale-[-1]">❧</div>
+
+        {/* Golden Rosette Seal */}
+        <div className="absolute -top-3 -right-2 z-20 pointer-events-none">
+          <CertificateSeal className="w-16 h-20 sm:w-18 sm:h-22 filter drop-shadow-md" />
         </div>
 
-        {/* Certificate Title */}
-        <h1 className="font-abril text-2xl sm:text-3xl text-[#C92A2A] uppercase tracking-wide">
+        {/* Certificate Pre-Heading */}
+        <div className="pt-2">
+          <p className="font-cinzel text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#92400E]">
+            ★ CERTIFICATE OF RECOGNITION ★
+          </p>
+        </div>
+
+        {/* Main Certificate Title */}
+        <h1 className="font-cinzelDeco text-2xl sm:text-3xl font-extrabold text-[#861A22] uppercase tracking-wider mt-1 drop-shadow-sm">
           {awardPage.title}
         </h1>
 
-        {/* Presented to */}
-        <p className="font-handwriting text-sm text-neutral-600 font-semibold mt-1">
-          {awardPage.subtitle}
+        {/* Presented to Calligraphy */}
+        <p className="font-pinyon text-lg sm:text-xl text-[#78350F] italic my-1">
+          This is proudly presented to
         </p>
 
-        {/* Recipient Name */}
-        <div className="my-1 py-1 px-4 inline-block border-b-2 border-dashed border-[#C92A2A]">
-          <span className="font-abril text-2xl sm:text-3xl text-[#C92A2A]">
+        {/* Recipient Name in Classical Calligraphy */}
+        <div className="my-2 py-1 px-4 inline-block">
+          <span className="font-greatVibes text-3xl sm:text-4xl text-[#991B1B] tracking-wide block">
             {recipientName}
           </span>
+          {/* Ornate Flourish Underline */}
+          <div className="w-36 sm:w-48 h-0.5 bg-gradient-to-r from-transparent via-[#B45309] to-transparent mx-auto mt-0.5" />
         </div>
 
-        {/* Award Text */}
-        <p className="font-patrick text-sm sm:text-base text-neutral-800 leading-snug mt-2 max-w-xs mx-auto">
+        {/* Award Citation Text */}
+        <p className="font-cormorant text-sm sm:text-base text-neutral-800 italic leading-relaxed max-w-[280px] mx-auto mt-2">
           "{awardPage.awardText}"
         </p>
 
-        {/* Authentic Award Shin-chan Artwork (Reference Image) */}
-        <div className="my-2 flex justify-center items-center">
-          <motion.img
-            src={referenceAssets.shinchanAward}
-            alt="Shin-chan with Trophy"
-            className="w-36 h-36 sm:w-40 sm:h-40 object-contain filter drop-shadow-[0_6px_12px_rgba(0,0,0,0.18)]"
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ type: 'spring' }}
-          />
+        {/* Classical Signatures & Seal Section */}
+        <div className="mt-5 pt-3 border-t border-[#D97706]/30 grid grid-cols-2 gap-2 items-end px-2">
+          {/* Left: Date / Recognition */}
+          <div className="text-left">
+            <p className="font-pinyon text-sm text-[#78350F]">Forever & Always</p>
+            <div className="w-20 h-px bg-[#B45309]/50 my-0.5" />
+            <p className="font-cinzel text-[9px] uppercase tracking-wider text-neutral-600 font-semibold">
+              DATE OF HONOUR
+            </p>
+          </div>
+
+          {/* Right: Signature */}
+          <div className="text-right">
+            <p className="font-greatVibes text-base text-[#991B1B]">With Love</p>
+            <div className="w-20 h-px bg-[#B45309]/50 my-0.5 ml-auto" />
+            <p className="font-cinzel text-[9px] uppercase tracking-wider text-neutral-600 font-semibold">
+              OFFICIAL SIGNATURE
+            </p>
+          </div>
         </div>
 
-        {/* Footer Stamp */}
-        <div className="border-t border-amber-200 pt-1.5 flex justify-center">
-          <span className="font-patrick text-xs font-bold text-amber-800 uppercase tracking-widest bg-amber-100/80 px-2.5 py-0.5 rounded">
-            ★ {awardPage.certifiedText} ★
+        {/* Discreet Tap Hint (Appears on hover or touch) */}
+        <div className="mt-3">
+          <span className="font-montserrat text-[10px] font-semibold text-amber-800/80 bg-amber-100/70 border border-amber-300/50 px-2.5 py-0.5 rounded-full inline-block">
+            {isDownloading ? "Generating Image..." : "📥 Tap certificate to download"}
           </span>
         </div>
       </motion.div>
 
-      {/* Back Button */}
+      {/* Download Success Toast Notification */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="fixed bottom-20 left-1/2 -translate-x-1/2 bg-neutral-900 text-white font-patrick text-sm px-4 py-2 rounded-full shadow-2xl z-50 flex items-center gap-1.5 border border-amber-500/40"
+          >
+            <span>🎉</span>
+            <span>Certificate downloaded successfully!</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Back to Gifts Navigation Button (No extra download button) */}
       <div className="w-full pt-2 flex justify-center pb-2 z-20">
         <button
           onClick={handleBack}

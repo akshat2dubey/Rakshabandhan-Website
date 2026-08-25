@@ -16,6 +16,12 @@ export default {
         shantell: ['"Shantell Sans"', 'cursive'],
         mali: ['Mali', 'cursive'],
         itim: ['Itim', 'cursive'],
+        cinzel: ['Cinzel', 'serif'],
+        cinzelDeco: ['"Cinzel Decorative"', 'serif'],
+        greatVibes: ['"Great Vibes"', 'cursive'],
+        cormorant: ['"Cormorant Garamond"', 'serif'],
+        pinyon: ['"Pinyon Script"', 'cursive'],
+        montserrat: ['Montserrat', 'sans-serif'],
       },
       colors: {
         scrapbook: {
@@ -36,29 +42,8 @@ export default {
       boxShadow: {
         'scrapbook': '0 8px 24px -4px rgba(60, 30, 10, 0.15), 0 2px 6px -1px rgba(60, 30, 10, 0.1)',
         'polaroid': '0 10px 20px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-        'sticker': '0 4px 8px rgba(0,0,0,0.12)',
-        'card-inset': 'inset 0 2px 4px rgba(0,0,0,0.06)',
-      },
-      animation: {
-        'wiggle': 'wiggle 1s ease-in-out infinite',
-        'float': 'float 3s ease-in-out infinite',
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
-        'spin-slow': 'spin 12s linear infinite',
-      },
-      keyframes: {
-        wiggle: {
-          '0%, 100%': { transform: 'rotate(-3deg)' },
-          '50%': { transform: 'rotate(3deg)' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-6px)' },
-        },
-        bounceGentle: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-8px)' },
-        }
+        'certificate': '0 12px 30px -4px rgba(180, 83, 9, 0.2), 0 4px 12px rgba(0, 0, 0, 0.08)',
+        'seal': '0 4px 12px rgba(180, 83, 9, 0.35)',
       }
     },
   },
