@@ -18,7 +18,7 @@ export const OpeningQuestionPage = ({ onYes, onNo }) => {
   };
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between items-center p-4 sm:p-6 text-center select-none">
+    <div className="relative w-full h-full flex flex-col justify-between items-center p-4 sm:p-6 text-center select-none overflow-hidden">
       {/* Top Question Space */}
       <div className="w-full pt-2">
         <h1 className="font-abril text-2xl sm:text-3xl text-neutral-900 leading-tight tracking-wide drop-shadow-sm">
@@ -31,7 +31,7 @@ export const OpeningQuestionPage = ({ onYes, onNo }) => {
         )}
       </div>
 
-      {/* Shin-chan Hula Hula / Butt Dance (Animated Anime GIF/Sticker) */}
+      {/* Shin-chan Hula Hula / Butt Dance (Centered & Unobstructed) */}
       <div className="relative my-auto flex flex-col justify-center items-center py-2">
         {/* Animated Dance Swaying Motion */}
         <motion.div
@@ -45,12 +45,12 @@ export const OpeningQuestionPage = ({ onYes, onNo }) => {
             repeat: Infinity, 
             ease: "easeInOut" 
           }}
-          className="relative"
+          className="relative z-10"
         >
           <img
             src={referenceAssets.shinchanHula}
             alt="Shin-chan Hula Dance"
-            className="w-48 h-48 sm:w-56 sm:h-56 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
+            className="w-52 h-52 sm:w-60 sm:h-60 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
           />
 
           {/* Dance Music / Motion Notes */}
@@ -69,17 +69,17 @@ export const OpeningQuestionPage = ({ onYes, onNo }) => {
             🎶
           </motion.span>
         </motion.div>
-
-        {/* Shiro Companion Sticker */}
-        <motion.img
-          src={referenceAssets.shiro}
-          alt="Shiro"
-          className="absolute -bottom-2 -right-4 w-18 h-18 sm:w-22 sm:h-22 object-contain filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)] transform rotate-6 pointer-events-none"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.2, type: 'spring' }}
-        />
       </div>
+
+      {/* Shiro Companion Sticker (Positioned aside in bottom-right corner) */}
+      <motion.img
+        src={referenceAssets.shiro}
+        alt="Shiro"
+        className="absolute bottom-20 -right-2 w-16 h-16 sm:w-20 sm:h-20 object-contain filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)] transform rotate-12 pointer-events-none z-0"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: 0.2, type: 'spring' }}
+      />
 
       {/* Interactive YES / NO Choice Area */}
       <div className="w-full max-w-[280px] flex gap-3 items-center justify-center pb-4 z-20">
