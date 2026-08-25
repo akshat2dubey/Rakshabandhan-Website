@@ -132,7 +132,7 @@ export const scrapbookConfig = {
       },
       {
         id: "phrase-3",
-        text: "food/clothes stealer",
+        text: "cloth stealer",
         top: "34%",
         left: "3%",
         rotation: "4deg"

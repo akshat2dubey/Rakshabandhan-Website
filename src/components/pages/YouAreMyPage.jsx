@@ -68,15 +68,15 @@ export const YouAreMyPage = ({ onBack }) => {
           </svg>
         </motion.div>
 
-        {/* 3. Food/Clothes Stealer (Middle Left) */}
+        {/* 3. Cloth Stealer (Middle Left) */}
         <motion.div 
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 }}
           className="absolute top-[36%] left-0 z-20"
         >
-          <span className="font-patrick text-sm sm:text-base font-bold text-amber-900 transform rotate-3 inline-block bg-amber-50/90 px-2 py-0.5 rounded border border-amber-300 shadow-sm max-w-[130px] leading-tight">
-            food/clothes stealer 🍟
+          <span className="font-patrick text-sm sm:text-base font-bold text-amber-900 transform rotate-3 inline-block bg-amber-50/90 px-2 py-0.5 rounded border border-amber-300 shadow-sm leading-tight">
+            cloth stealer 👗
           </span>
           <svg className="w-12 h-6 overflow-visible mt-0.5 ml-8" fill="none">
             <path d="M 0 5 Q 15 5 28 8" stroke="#D97706" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
@@ -91,7 +91,7 @@ export const YouAreMyPage = ({ onBack }) => {
           transition={{ delay: 0.1 }}
           className="absolute top-[36%] right-0 z-20 text-right"
         >
-          <span className="font-patrick text-sm sm:text-base font-bold text-emerald-900 transform -rotate-4 inline-block bg-amber-50/90 px-2 py-0.5 rounded border border-emerald-300 shadow-sm max-w-[130px] leading-tight">
+          <span className="font-patrick text-sm sm:text-base font-bold text-emerald-900 transform -rotate-4 inline-block bg-amber-50/90 px-2 py-0.5 rounded border border-emerald-300 shadow-sm leading-tight">
             bank account 💳
           </span>
           <svg className="w-12 h-6 overflow-visible mt-0.5 mr-8 ml-auto" fill="none">
