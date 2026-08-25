@@ -5,7 +5,7 @@ import { scrapbookConfig } from '../../config/scrapbookData';
 import { sounds } from '../../utils/audio';
 
 export const OpeningQuestionPage = ({ onYes, onNo }) => {
-  const { openingPage } = scrapbookConfig;
+  const { openingPage, recipientName } = scrapbookConfig;
 
   const handleYes = () => {
     sounds.playPop();
@@ -19,29 +19,62 @@ export const OpeningQuestionPage = ({ onYes, onNo }) => {
 
   return (
     <div className="relative w-full h-full flex flex-col justify-between items-center p-4 sm:p-6 text-center select-none">
-      {/* Top Decorative Space */}
+      {/* Top Question Space */}
       <div className="w-full pt-2">
         <h1 className="font-abril text-2xl sm:text-3xl text-neutral-900 leading-tight tracking-wide drop-shadow-sm">
           {openingPage.question}
         </h1>
+        {recipientName && (
+          <p className="font-handwriting text-lg text-[#C92A2A] font-bold mt-0.5">
+            For {recipientName} ✨
+          </p>
+        )}
       </div>
 
-      {/* Prominent Shin-chan Artwork (Reference Image) */}
+      {/* Shin-chan Hula Hula / Butt Dance (Animated Anime GIF/Sticker) */}
       <div className="relative my-auto flex flex-col justify-center items-center py-2">
-        <motion.img
-          src={referenceAssets.shinchanOpening}
-          alt="Shin-chan"
-          className="w-48 h-48 sm:w-56 sm:h-56 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: 'spring', damping: 15 }}
-        />
+        {/* Animated Dance Swaying Motion */}
+        <motion.div
+          animate={{ 
+            rotate: [-6, 6, -6],
+            x: [-5, 5, -5],
+            y: [0, -4, 0]
+          }}
+          transition={{ 
+            duration: 0.9, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="relative"
+        >
+          <img
+            src={referenceAssets.shinchanHula}
+            alt="Shin-chan Hula Dance"
+            className="w-48 h-48 sm:w-56 sm:h-56 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
+          />
+
+          {/* Dance Music / Motion Notes */}
+          <motion.span
+            animate={{ y: [-4, -14, -4], opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 1.2, repeat: Infinity }}
+            className="absolute -top-2 -left-2 text-xl pointer-events-none"
+          >
+            🎵
+          </motion.span>
+          <motion.span
+            animate={{ y: [-4, -14, -4], opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 1.2, delay: 0.5, repeat: Infinity }}
+            className="absolute -top-2 -right-2 text-xl pointer-events-none"
+          >
+            🎶
+          </motion.span>
+        </motion.div>
 
         {/* Shiro Companion Sticker */}
         <motion.img
           src={referenceAssets.shiro}
           alt="Shiro"
-          className="absolute -bottom-2 -right-4 w-20 h-20 sm:w-24 sm:h-24 object-contain filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)] transform rotate-6"
+          className="absolute -bottom-2 -right-4 w-18 h-18 sm:w-22 sm:h-22 object-contain filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)] transform rotate-6 pointer-events-none"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, type: 'spring' }}

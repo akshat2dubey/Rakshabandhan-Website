@@ -14,28 +14,78 @@ export const HowDareYouPage = ({ onRetry }) => {
 
   return (
     <div className="relative w-full h-full flex flex-col justify-between items-center p-4 sm:p-6 text-center select-none bg-rose-50/20">
-      {/* Heading */}
+      {/* Heading with Vibrating Rage Animation */}
       <div className="w-full pt-4">
         <motion.h1 
-          initial={{ scale: 0.8 }}
-          animate={{ scale: [1, 1.08, 1], rotate: [-2, 2, 0] }}
-          transition={{ duration: 0.5 }}
+          animate={{ 
+            rotate: [-2, 2, -2, 2, 0],
+            scale: [1, 1.05, 1]
+          }}
+          transition={{ 
+            duration: 0.4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
           className="font-abril text-3xl sm:text-4xl text-[#C92A2A] tracking-wider drop-shadow-sm"
         >
           {howDareYouPage.title}
         </motion.h1>
       </div>
 
-      {/* Angry Shin-chan Artwork (Reference Image) */}
-      <div className="relative my-auto flex justify-center items-center py-2">
-        <motion.img
-          src={referenceAssets.shinchanAngry}
-          alt="Angry Shin-chan"
-          className="w-52 h-52 sm:w-60 sm:h-60 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.2)]"
-          initial={{ scale: 0.8, y: 20 }}
-          animate={{ scale: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 220 }}
-        />
+      {/* Angry Tantrum Shin-chan (Flailing & Stomping Tantrum Animation) */}
+      <div className="relative my-auto flex flex-col justify-center items-center py-2">
+        
+        {/* Animated Anger Veins (💢) */}
+        <motion.div
+          animate={{ scale: [0.8, 1.3, 0.8], rotate: [-10, 10, -10] }}
+          transition={{ duration: 0.5, repeat: Infinity }}
+          className="absolute -top-3 right-6 text-2xl z-20 pointer-events-none"
+        >
+          💢
+        </motion.div>
+        <motion.div
+          animate={{ scale: [0.8, 1.3, 0.8], rotate: [10, -10, 10] }}
+          transition={{ duration: 0.5, delay: 0.25, repeat: Infinity }}
+          className="absolute -top-3 left-6 text-xl z-20 pointer-events-none"
+        >
+          💢
+        </motion.div>
+
+        {/* Tantrum Flailing Body Motion */}
+        <motion.div
+          animate={{ 
+            rotate: [-6, 6, -6, 6, 0],
+            y: [0, -8, 2, -8, 0],
+            x: [-4, 4, -4, 4, 0]
+          }}
+          transition={{ 
+            duration: 0.5, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+        >
+          <img
+            src={referenceAssets.shinchanAngry}
+            alt="Angry Shin-chan Tantrum"
+            className="w-52 h-52 sm:w-60 sm:h-60 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.2)]"
+          />
+        </motion.div>
+
+        {/* Tears Flying */}
+        <motion.div
+          animate={{ y: [0, 8, 16], opacity: [1, 0.8, 0] }}
+          transition={{ duration: 0.6, repeat: Infinity }}
+          className="absolute bottom-12 left-10 text-lg pointer-events-none"
+        >
+          💦
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, 8, 16], opacity: [1, 0.8, 0] }}
+          transition={{ duration: 0.6, delay: 0.3, repeat: Infinity }}
+          className="absolute bottom-12 right-10 text-lg pointer-events-none"
+        >
+          💦
+        </motion.div>
       </div>
 
       {/* Return / Retry Button */}
