@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background-color: #1e130c;
+    background-image: radial-gradient(#3a2518 1px, transparent 1px), radial-gradient(#3a2518 1px, #1e130c 1px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    color: #2D2424;
+    user-select: none;
+  }
+}
+
+/* Red-and-white gingham check pattern */
+.bg-gingham-border {
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(45deg, rgba(201, 42, 42, 0.45) 25%, transparent 25%), 
+    linear-gradient(-45deg, rgba(201, 42, 42, 0.45) 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, rgba(201, 42, 42, 0.45) 75%), 
+    linear-gradient(-45deg, transparent 75%, rgba(201, 42, 42, 0.45) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+}
+
+.bg-gingham-dense {
+  background-color: #fffaf0;
+  background-image: 
+    linear-gradient(45deg, rgba(185, 28, 28, 0.5) 25%, transparent 25%), 
+    linear-gradient(-45deg, rgba(185, 28, 28, 0.5) 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, rgba(185, 28, 28, 0.5) 75%), 
+    linear-gradient(-45deg, transparent 75%, rgba(185, 28, 28, 0.5) 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
+}
+
+/* Cream paper subtle grain */
+.bg-paper-texture {
+  background-color: #FAF5EA;
+  background-image: radial-gradient(rgba(140, 100, 60, 0.06) 1px, transparent 0);
+  background-size: 14px 14px;
+}
+
+/* Lined notebook paper background */
+.bg-notebook-lines {
+  background-color: #FCF9F2;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    rgba(210, 180, 140, 0.35) 28px
+  );
+  line-height: 28px;
+}
+
+/* Washi Tape styling */
+.washi-tape {
+  background: rgba(255, 223, 143, 0.7);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 2px dashed rgba(220, 180, 80, 0.4);
+  border-right: 2px dashed rgba(220, 180, 80, 0.4);
+}
+
+.washi-tape-pink {
+  background: rgba(255, 182, 193, 0.7);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 2px dashed rgba(220, 140, 160, 0.4);
+  border-right: 2px dashed rgba(220, 140, 160, 0.4);
+}
+
+.washi-tape-red {
+  background: rgba(239, 68, 68, 0.65);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  border-left: 2px dashed rgba(180, 40, 40, 0.4);
+  border-right: 2px dashed rgba(180, 40, 40, 0.4);
+}
+
+/* Custom scrollbar hidden */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Sticker Drop Shadow */
+.sticker-shadow {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Stamp border effect */
+.stamp-border {
+  border: 4px dashed #C92A2A;
+  border-radius: 8px;
+}
