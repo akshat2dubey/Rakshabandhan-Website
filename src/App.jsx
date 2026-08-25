@@ -23,23 +23,11 @@ const PAGE_KEYS = {
   FINAL_REVEAL: 'FINAL_REVEAL'
 };
 
-const PAGE_TITLES = {
-  [PAGE_KEYS.OPENING]: '📖 Shin-chan Scrapbook',
-  [PAGE_KEYS.HOW_DARE_YOU]: '💢 How Dare You?!',
-  [PAGE_KEYS.ARE_YOU_REALLY]: '🤔 Are You Sure?',
-  [PAGE_KEYS.MEMORIES]: '📸 Sweet Memories',
-  [PAGE_KEYS.GIFTS]: '🎁 Pick A Gift',
-  [PAGE_KEYS.AWARD]: '🏆 Official Award',
-  [PAGE_KEYS.YOU_ARE_MY]: '❤️ You Are My...',
-  [PAGE_KEYS.LETTER]: '💌 Little Letter',
-  [PAGE_KEYS.FINAL_REVEAL]: '🎉 Final Surprise'
-};
-
 export function App() {
   const [currentPage, setCurrentPage] = useState(PAGE_KEYS.OPENING);
   const [openedGifts, setOpenedGifts] = useState([]);
 
-  // Auto initialize sound on first user touch / interaction
+  // Auto initialize Web Audio on first user gesture
   useEffect(() => {
     const handleFirstInteraction = () => {
       sounds.initContext();
@@ -72,10 +60,7 @@ export function App() {
   };
 
   return (
-    <ScrapbookContainer
-      pageKey={currentPage}
-      pageTitle={PAGE_TITLES[currentPage]}
-    >
+    <ScrapbookContainer pageKey={currentPage}>
       {currentPage === PAGE_KEYS.OPENING && (
         <OpeningQuestionPage
           onYes={() => setCurrentPage(PAGE_KEYS.ARE_YOU_REALLY)}
@@ -105,7 +90,6 @@ export function App() {
         <GiftSectionPage
           openedGifts={openedGifts}
           onSelectGift={handleSelectGift}
-          onFinalSurprise={() => setCurrentPage(PAGE_KEYS.FINAL_REVEAL)}
         />
       )}
 

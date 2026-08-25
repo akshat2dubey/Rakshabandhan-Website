@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShinchanAward } from '../ui/ShinchanArtwork';
-import { CertificateSeal, WashiTape, StampBadge } from '../ui/ScrapbookDecorations';
+import { referenceAssets } from '../../config/referenceAssets';
 import { scrapbookConfig } from '../../config/scrapbookData';
+import { CertificateSeal } from '../ui/ScrapbookDecorations';
 import { sounds } from '../../utils/audio';
 
 export const BestSisterAwardPage = ({ onBack }) => {
@@ -15,73 +15,68 @@ export const BestSisterAwardPage = ({ onBack }) => {
 
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-3 sm:p-5 select-none overflow-y-auto no-scrollbar">
-      {/* Top Bar */}
-      <div className="w-full flex items-center justify-between mb-1">
-        <WashiTape color="gingham" width="w-20" rotate="-3deg" />
-        <StampBadge text={awardPage.badge} color="red" />
-        <WashiTape color="yellow" width="w-20" rotate="2deg" />
-      </div>
-
-      {/* Certificate Frame Box */}
+      {/* Certificate Card on Paper */}
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5, type: 'spring' }}
-        className="relative my-auto w-full bg-amber-50/90 rounded-2xl p-4 sm:p-5 border-4 border-double border-amber-600 shadow-lg text-center"
+        transition={{ duration: 0.4 }}
+        className="relative my-auto w-full bg-[#FFFDF8] rounded-2xl p-4 sm:p-5 border-4 border-double border-amber-600 shadow-md text-center"
       >
-        {/* Certificate Golden Seal */}
-        <div className="absolute -top-6 -right-2 z-20">
-          <CertificateSeal className="w-16 h-20 sm:w-20 sm:h-24" />
+        {/* Certificate Seal */}
+        <div className="absolute -top-5 -right-2 z-20">
+          <CertificateSeal className="w-16 h-20 sm:w-18 sm:h-22" />
         </div>
 
         {/* Certificate Title */}
-        <h1 className="font-abril text-2xl sm:text-3xl text-red-700 uppercase tracking-wider drop-shadow-sm">
+        <h1 className="font-abril text-2xl sm:text-3xl text-[#C92A2A] uppercase tracking-wide">
           {awardPage.title}
         </h1>
 
-        {/* Presented To Label */}
+        {/* Presented to */}
         <p className="font-handwriting text-sm text-neutral-600 font-semibold mt-1">
-          {awardPage.presentedTo}
+          {awardPage.subtitle}
         </p>
 
-        {/* Recipient Name Highlight */}
-        <div className="my-2 py-1 px-4 inline-block border-b-2 border-dashed border-red-500 bg-red-50/50 rounded">
-          <span className="font-abril text-2xl sm:text-3xl text-red-600 tracking-wide">
+        {/* Recipient Name */}
+        <div className="my-1 py-1 px-4 inline-block border-b-2 border-dashed border-[#C92A2A]">
+          <span className="font-abril text-2xl sm:text-3xl text-[#C92A2A]">
             {recipientName}
           </span>
         </div>
 
-        {/* Award Description Text */}
-        <p className="font-patrick text-sm sm:text-base text-neutral-800 leading-relaxed max-w-xs mx-auto mt-2">
-          "{awardPage.awardDescription}"
+        {/* Award Text */}
+        <p className="font-patrick text-sm sm:text-base text-neutral-800 leading-snug mt-2 max-w-xs mx-auto">
+          "{awardPage.awardText}"
         </p>
 
-        {/* Shin-chan Bowtie Artwork */}
+        {/* Authentic Award Shin-chan Artwork (Reference Image) */}
         <div className="my-2 flex justify-center items-center">
-          <ShinchanAward className="w-32 h-32 sm:w-36 sm:h-36" animated={true} />
+          <motion.img
+            src={referenceAssets.shinchanAward}
+            alt="Shin-chan with Trophy"
+            className="w-36 h-36 sm:w-40 sm:h-40 object-contain filter drop-shadow-[0_6px_12px_rgba(0,0,0,0.18)]"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{ type: 'spring' }}
+          />
         </div>
 
-        {/* Certified By Footer */}
-        <div className="border-t border-amber-300 pt-2 flex justify-between items-center px-2">
-          <span className="font-handwriting text-xs text-neutral-600">
-            {awardPage.certifiedBy}
-          </span>
-          <span className="font-patrick text-xs font-bold text-amber-700 uppercase tracking-widest bg-amber-100 px-2 py-0.5 rounded">
-            {awardPage.sealText}
+        {/* Footer Stamp */}
+        <div className="border-t border-amber-200 pt-1.5 flex justify-center">
+          <span className="font-patrick text-xs font-bold text-amber-800 uppercase tracking-widest bg-amber-100/80 px-2.5 py-0.5 rounded">
+            ★ {awardPage.certifiedText} ★
           </span>
         </div>
       </motion.div>
 
-      {/* Back to Gifts Button */}
-      <div className="w-full pt-2 flex justify-center z-20">
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.96 }}
+      {/* Back Button */}
+      <div className="w-full pt-2 flex justify-center pb-2 z-20">
+        <button
           onClick={handleBack}
-          className="w-full max-w-xs py-2.5 px-4 rounded-full bg-neutral-800 hover:bg-neutral-700 text-white font-patrick text-base sm:text-lg font-bold shadow-md flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full max-w-[240px] py-2.5 px-4 rounded-full bg-neutral-800 hover:bg-neutral-700 active:scale-95 text-white font-patrick text-base font-bold shadow-md transition-all cursor-pointer"
         >
           {awardPage.backButtonText}
-        </motion.button>
+        </button>
       </div>
     </div>
   );

@@ -1,128 +1,147 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { PolaroidPhoto, WashiTape, StampBadge } from '../ui/ScrapbookDecorations';
-import { ChocobiSticker, ShiroSticker } from '../ui/ShinchanArtwork';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { referenceAssets } from '../../config/referenceAssets';
 import { scrapbookConfig } from '../../config/scrapbookData';
+import { WashiTape } from '../ui/ScrapbookDecorations';
 import { sounds } from '../../utils/audio';
 
 export const MemoriesPage = ({ onNext }) => {
   const { memoriesPage } = scrapbookConfig;
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  const handlePhotoClick = (photo) => {
-    sounds.playPop();
-    setSelectedPhoto(photo);
-  };
-
-  const handleCloseModal = () => {
-    sounds.playClick();
-    setSelectedPhoto(null);
-  };
-
-  const handleProceed = () => {
+  const handleNext = () => {
     sounds.playPageTurn();
     onNext();
   };
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-3 sm:p-5 select-none overflow-y-auto no-scrollbar">
-      {/* Header Bar */}
-      <div className="w-full flex items-center justify-between border-b-2 border-dashed border-red-200 pb-2 mb-2">
-        <StampBadge text="CHAPTER 01" color="red" />
-        <div className="text-center">
-          <h1 className="font-abril text-2xl sm:text-3xl text-red-700 tracking-wider">
-            {memoriesPage.title}
-          </h1>
-          <p className="font-handwriting text-sm text-neutral-600 font-semibold">
-            {memoriesPage.subtitle}
+    <div className="relative w-full h-full flex flex-col justify-between p-3 sm:p-4 select-none overflow-hidden">
+      {/* Title */}
+      <div className="w-full text-center pt-1 z-20">
+        <h1 className="font-abril text-3xl sm:text-4xl text-[#C92A2A] tracking-widest drop-shadow-sm">
+          {memoriesPage.title}
+        </h1>
+      </div>
+
+      {/* Physical Handmade Scrapbook Collage (Manual Layered Placement) */}
+      <div className="relative w-full flex-1 my-1 overflow-hidden">
+        {/* Photo 1 (Top Left) */}
+        <motion.div
+          initial={{ opacity: 0, rotate: -12, scale: 0.9 }}
+          animate={{ opacity: 1, rotate: -6, scale: 1 }}
+          transition={{ duration: 0.4 }}
+          className="absolute top-1 left-1 w-[49%] max-w-[170px] bg-white p-2 pb-3 rounded-sm shadow-polaroid border border-neutral-200 z-10"
+        >
+          <div className="absolute -top-2 left-1/2 -translate-x-1/2">
+            <WashiTape color="yellow" width="w-16" rotate="-2deg" />
+          </div>
+          <div className="w-full aspect-[4/3] bg-neutral-100 overflow-hidden rounded-[1px]">
+            <img 
+              src={memoriesPage.photos[0].src} 
+              alt={memoriesPage.photos[0].caption}
+              className="w-full h-full object-cover" 
+            />
+          </div>
+          <p className="font-patrick text-xs sm:text-sm font-semibold text-neutral-800 text-center mt-1.5 truncate">
+            {memoriesPage.photos[0].caption}
           </p>
-        </div>
-        <WashiTape color="gingham" width="w-16" rotate="4deg" />
+        </motion.div>
+
+        {/* Photo 2 (Top Right) */}
+        <motion.div
+          initial={{ opacity: 0, rotate: 12, scale: 0.9 }}
+          animate={{ opacity: 1, rotate: 5, scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="absolute top-4 right-1 w-[49%] max-w-[170px] bg-white p-2 pb-3 rounded-sm shadow-polaroid border border-neutral-200 z-10"
+        >
+          <div className="absolute -top-2 left-1/2 -translate-x-1/2">
+            <WashiTape color="pink" width="w-16" rotate="3deg" />
+          </div>
+          <div className="w-full aspect-[4/3] bg-neutral-100 overflow-hidden rounded-[1px]">
+            <img 
+              src={memoriesPage.photos[1].src} 
+              alt={memoriesPage.photos[1].caption}
+              className="w-full h-full object-cover" 
+            />
+          </div>
+          <p className="font-patrick text-xs sm:text-sm font-semibold text-neutral-800 text-center mt-1.5 truncate">
+            {memoriesPage.photos[1].caption}
+          </p>
+        </motion.div>
+
+        {/* Center Chocobi Sticker */}
+        <motion.img
+          src={referenceAssets.chocobi}
+          alt="Chocobi"
+          className="absolute top-[40%] left-[38%] -translate-x-1/2 -translate-y-1/2 w-16 h-20 object-contain z-20 filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)] transform -rotate-12 pointer-events-none"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.3, type: 'spring' }}
+        />
+
+        {/* Photo 3 (Bottom Left) */}
+        <motion.div
+          initial={{ opacity: 0, rotate: -8, scale: 0.9 }}
+          animate={{ opacity: 1, rotate: -3, scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="absolute bottom-2 left-2 w-[48%] max-w-[165px] bg-white p-2 pb-3 rounded-sm shadow-polaroid border border-neutral-200 z-10"
+        >
+          <div className="absolute -top-2 left-1/2 -translate-x-1/2">
+            <WashiTape color="mint" width="w-16" rotate="-4deg" />
+          </div>
+          <div className="w-full aspect-[4/3] bg-neutral-100 overflow-hidden rounded-[1px]">
+            <img 
+              src={memoriesPage.photos[2].src} 
+              alt={memoriesPage.photos[2].caption}
+              className="w-full h-full object-cover" 
+            />
+          </div>
+          <p className="font-patrick text-xs sm:text-sm font-semibold text-neutral-800 text-center mt-1.5 truncate">
+            {memoriesPage.photos[2].caption}
+          </p>
+        </motion.div>
+
+        {/* Photo 4 (Bottom Right) */}
+        <motion.div
+          initial={{ opacity: 0, rotate: 10, scale: 0.9 }}
+          animate={{ opacity: 1, rotate: 4, scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="absolute bottom-1 right-1 w-[49%] max-w-[170px] bg-white p-2 pb-3 rounded-sm shadow-polaroid border border-neutral-200 z-10"
+        >
+          <div className="absolute -top-2 left-1/2 -translate-x-1/2">
+            <WashiTape color="red" width="w-16" rotate="2deg" />
+          </div>
+          <div className="w-full aspect-[4/3] bg-neutral-100 overflow-hidden rounded-[1px]">
+            <img 
+              src={memoriesPage.photos[3].src} 
+              alt={memoriesPage.photos[3].caption}
+              className="w-full h-full object-cover" 
+            />
+          </div>
+          <p className="font-patrick text-xs sm:text-sm font-semibold text-neutral-800 text-center mt-1.5 truncate">
+            {memoriesPage.photos[3].caption}
+          </p>
+        </motion.div>
+
+        {/* Shiro Sticker Bottom Right */}
+        <motion.img
+          src={referenceAssets.shiro}
+          alt="Shiro"
+          className="absolute -bottom-2 -right-2 w-16 h-16 object-contain z-30 filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)] transform rotate-12 pointer-events-none"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.4, type: 'spring' }}
+        />
       </div>
 
-      {/* Scrapbook Photo Collage (Non-generic physical layout) */}
-      <div className="relative w-full flex-1 my-2 grid grid-cols-2 gap-3 sm:gap-4 items-center justify-items-center py-2">
-        {memoriesPage.photos.map((photo, idx) => (
-          <PolaroidPhoto
-            key={photo.id || idx}
-            src={photo.src}
-            caption={photo.caption}
-            date={photo.date}
-            rotation={photo.rotation}
-            tapeColor={photo.tapeColor}
-            className="w-full max-w-[170px]"
-            onClick={() => handlePhotoClick(photo)}
-          />
-        ))}
-
-        {/* Floating Scrapbook Stickers */}
-        <div className="absolute -bottom-2 -left-2 pointer-events-none z-20">
-          <ChocobiSticker className="w-14 h-18 sm:w-16 sm:h-20 transform -rotate-12" />
-        </div>
-
-        <div className="absolute -top-1 -right-2 pointer-events-none z-20">
-          <ShiroSticker className="w-14 h-14 sm:w-16 sm:h-16 transform rotate-6" />
-        </div>
-      </div>
-
-      {/* Bottom Action Button */}
-      <div className="w-full pt-2 flex flex-col items-center gap-2 z-20">
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.96 }}
-          onClick={handleProceed}
-          className="w-full max-w-xs py-3 px-5 rounded-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-patrick text-lg font-bold shadow-lg hover:shadow-red-500/30 border-2 border-red-700 flex items-center justify-center gap-2 cursor-pointer"
+      {/* Next Button */}
+      <div className="w-full flex justify-center pb-2 z-30">
+        <button
+          onClick={handleNext}
+          className="w-full max-w-[240px] py-2.5 px-5 rounded-full bg-[#C92A2A] hover:bg-[#B02525] active:scale-95 text-white font-patrick text-lg font-bold shadow-md hover:shadow-lg transition-all duration-150 border-2 border-[#861A22] cursor-pointer"
         >
           {memoriesPage.nextButtonText}
-        </motion.button>
-        <span className="font-handwriting text-xs text-neutral-500">
-          Tap any Polaroid to inspect the memory 📸
-        </span>
+        </button>
       </div>
-
-      {/* Lightbox / Memory Zoom Modal */}
-      <AnimatePresence>
-        {selectedPhoto && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={handleCloseModal}
-            className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4"
-          >
-            <motion.div
-              initial={{ scale: 0.8, rotate: -3 }}
-              animate={{ scale: 1, rotate: 0 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-sm w-full bg-white p-4 rounded-lg shadow-2xl border-4 border-amber-100"
-            >
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <WashiTape color="pink" width="w-24" rotate="2deg" />
-              </div>
-              <img
-                src={selectedPhoto.src}
-                alt={selectedPhoto.caption}
-                className="w-full rounded-md shadow-inner object-cover max-h-[380px]"
-              />
-              <div className="mt-4 text-center">
-                <h3 className="font-patrick text-xl font-bold text-neutral-800">
-                  {selectedPhoto.caption}
-                </h3>
-                <p className="font-handwriting text-base text-red-600 font-semibold mt-1">
-                  {selectedPhoto.date}
-                </p>
-              </div>
-              <button
-                onClick={handleCloseModal}
-                className="mt-4 w-full py-2 bg-neutral-800 text-white rounded-full font-patrick text-base font-bold hover:bg-neutral-700 transition-colors"
-              >
-                Close ✕
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
