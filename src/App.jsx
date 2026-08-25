@@ -91,6 +91,7 @@ export function App() {
           openedGifts={openedGifts}
           onSelectGift={handleSelectGift}
           onBack={() => setCurrentPage(PAGE_KEYS.MEMORIES)}
+          onProceedToFinal={() => setCurrentPage(PAGE_KEYS.FINAL_REVEAL)}
         />
       )}
 

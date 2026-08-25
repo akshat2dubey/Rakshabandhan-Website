@@ -145,8 +145,8 @@ export const MemoriesPage = ({ onNext }) => {
           </p>
         </motion.div>
 
-        {/* Tier 3 - Right: Shiro Sticker & Decorative Note */}
-        <div className="absolute bottom-2 right-3 w-[44%] flex flex-col items-center justify-center pointer-events-none z-20">
+        {/* Tier 3 - Right: Shiro Sticker */}
+        <div className="absolute bottom-2 right-4 w-[40%] flex flex-col items-center justify-center pointer-events-none z-20">
           <motion.img
             src={referenceAssets.shiro}
             alt="Shiro"
@@ -155,14 +155,6 @@ export const MemoriesPage = ({ onNext }) => {
             animate={{ scale: 1 }}
             transition={{ delay: 0.35, type: 'spring' }}
           />
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="font-handwriting text-sm text-[#C92A2A] font-bold text-center -mt-1 transform rotate-2"
-          >
-            Best Memories Forever ❤️
-          </motion.span>
         </div>
 
       </div>

@@ -4,8 +4,9 @@ import { GiftBoxItem } from '../ui/ScrapbookDecorations';
 import { scrapbookConfig } from '../../config/scrapbookData';
 import { sounds } from '../../utils/audio';
 
-export const GiftSectionPage = ({ onSelectGift, onBack, openedGifts = [] }) => {
+export const GiftSectionPage = ({ onSelectGift, onBack, onProceedToFinal, openedGifts = [] }) => {
   const { giftsSection } = scrapbookConfig;
+  const allOpened = openedGifts.length >= 3;
 
   const handleGiftClick = (gift) => {
     sounds.playGiftOpen();
@@ -25,15 +26,15 @@ export const GiftSectionPage = ({ onSelectGift, onBack, openedGifts = [] }) => {
       </div>
 
       {/* 3 Interactive Gift Boxes */}
-      <div className="w-full my-auto py-6 flex flex-row justify-center items-center gap-4 sm:gap-6">
+      <div className="w-full my-auto py-4 flex flex-row justify-center items-center gap-3 sm:gap-5">
         {giftsSection.gifts.map((gift, idx) => {
           const isOpened = openedGifts.includes(gift.id);
           return (
             <motion.div
               key={gift.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.15, type: 'spring' }}
+              transition={{ delay: idx * 0.1, duration: 0.3 }}
             >
               <GiftBoxItem
                 giftNumber={gift.giftNumber}
@@ -47,11 +48,23 @@ export const GiftSectionPage = ({ onSelectGift, onBack, openedGifts = [] }) => {
         })}
       </div>
 
-      {/* Back to Memories Navigation Button */}
+      {/* Navigation Buttons */}
       <div className="w-full pb-3 flex flex-col items-center gap-2 z-20">
-        <span className="font-handwriting text-xs text-neutral-500">
-          Tap any gift box to open ✨
-        </span>
+        {allOpened && onProceedToFinal ? (
+          <button
+            onClick={() => {
+              sounds.playPageTurn();
+              onProceedToFinal();
+            }}
+            className="w-full max-w-[220px] py-2.5 px-4 rounded-full bg-[#C92A2A] hover:bg-[#B02525] active:scale-95 text-white font-patrick text-base font-bold shadow-md hover:shadow-lg transition-all duration-150 border-2 border-[#861A22] cursor-pointer animate-pulse"
+          >
+            One Last Surprise ➔
+          </button>
+        ) : (
+          <span className="font-handwriting text-xs text-neutral-500">
+            Tap any gift box to open ✨
+          </span>
+        )}
 
         {onBack && (
           <button
@@ -59,7 +72,7 @@ export const GiftSectionPage = ({ onSelectGift, onBack, openedGifts = [] }) => {
               sounds.playPageTurn();
               onBack();
             }}
-            className="w-full max-w-[220px] py-2.5 px-4 rounded-full bg-neutral-800 hover:bg-neutral-700 active:scale-95 text-white font-patrick text-base font-bold shadow-md transition-all cursor-pointer"
+            className="w-full max-w-[220px] py-2 px-4 rounded-full bg-neutral-800 hover:bg-neutral-700 active:scale-95 text-white font-patrick text-sm font-bold shadow-md transition-all cursor-pointer"
           >
             ⬅ Back to Memories 📸
           </button>
