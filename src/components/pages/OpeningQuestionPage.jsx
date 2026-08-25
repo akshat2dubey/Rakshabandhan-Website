@@ -31,7 +31,7 @@ export const OpeningQuestionPage = ({ onYes, onNo }) => {
         )}
       </div>
 
-      {/* Shin-chan Hula Hula / Butt Dance (Centered & Unobstructed) */}
+      {/* Shin-chan Hula Hula / Butt Dance (Pure Centered) */}
       <div className="relative my-auto flex flex-col justify-center items-center py-2">
         {/* Animated Dance Swaying Motion */}
         <motion.div
@@ -50,7 +50,7 @@ export const OpeningQuestionPage = ({ onYes, onNo }) => {
           <img
             src={referenceAssets.shinchanHula}
             alt="Shin-chan Hula Dance"
-            className="w-52 h-52 sm:w-60 sm:h-60 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
+            className="w-56 h-56 sm:w-64 sm:h-64 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
           />
 
           {/* Dance Music / Motion Notes */}
@@ -70,16 +70,6 @@ export const OpeningQuestionPage = ({ onYes, onNo }) => {
           </motion.span>
         </motion.div>
       </div>
-
-      {/* Shiro Companion Sticker (Positioned aside in bottom-right corner) */}
-      <motion.img
-        src={referenceAssets.shiro}
-        alt="Shiro"
-        className="absolute bottom-20 -right-2 w-16 h-16 sm:w-20 sm:h-20 object-contain filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)] transform rotate-12 pointer-events-none z-0"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 0.2, type: 'spring' }}
-      />
 
       {/* Interactive YES / NO Choice Area */}
       <div className="w-full max-w-[280px] flex gap-3 items-center justify-center pb-4 z-20">
