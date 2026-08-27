@@ -80,8 +80,11 @@ export const FinalRevealPage = ({ onRestart, onReadLetter }) => {
               alt="Sparkle Shin-chan"
               className="w-52 h-52 sm:w-60 sm:h-60 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
               initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: [0.98, 1.03, 0.98] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ scale: [0.98, 1.03, 0.98], opacity: 1 }}
+              transition={{ 
+                scale: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+                opacity: { duration: 0.35 }
+              }}
             />
           </div>
 
