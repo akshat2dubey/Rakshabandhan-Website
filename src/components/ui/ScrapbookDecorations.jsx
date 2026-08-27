@@ -196,15 +196,19 @@ export const GiftBoxItem = ({
           )}
         </svg>
 
-        {/* Gift Number Badge */}
-        <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-red-600 border-2 border-white text-white font-patrick text-xs flex items-center justify-center font-bold shadow-md">
-          {giftNumber}
+        {/* Gift Number / Opened Badge */}
+        <div className={`absolute -top-1 -right-1 min-w-[24px] h-6 px-1 rounded-full ${isOpened ? 'bg-emerald-600' : 'bg-red-600'} border-2 border-white text-white font-patrick text-xs flex items-center justify-center font-bold shadow-md`}>
+          {isOpened ? "✓" : giftNumber}
         </div>
       </div>
 
-      {/* Gift Label */}
-      <span className="mt-2 font-patrick text-sm font-bold text-red-900 group-hover:text-red-600 transition-colors bg-amber-100/90 px-2 py-0.5 rounded-full border border-red-300/60 shadow-sm">
-        {title}
+      {/* Gift Label & Opened Feedback */}
+      <span className={`mt-2 font-patrick text-xs sm:text-sm font-bold transition-all px-2.5 py-0.5 rounded-full border shadow-sm ${
+        isOpened 
+          ? "bg-emerald-50 text-emerald-900 border-emerald-300" 
+          : "bg-amber-100/90 text-red-900 group-hover:text-red-600 border-red-300/60"
+      }`}>
+        {title} {isOpened && <span className="text-emerald-600 ml-0.5 font-bold">✓</span>}
       </span>
     </motion.button>
   );

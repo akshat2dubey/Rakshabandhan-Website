@@ -6,32 +6,38 @@ import { WashiTape } from '../ui/ScrapbookDecorations';
 import { sounds } from '../../utils/audio';
 
 const INTRO_STAGES = {
-  GREETING: 0,
-  REVEAL: 1,
-  PROMPT: 2,
-  QUESTION: 3
+  OPENING_BOOK: 0,
+  GREETING: 1,
+  REVEAL: 2,
+  PROMPT: 3,
+  QUESTION: 4
 };
 
 export const OpeningQuestionPage = ({ onYes, onNo, skipIntro = false }) => {
   const { openingPage, recipientName, senderName } = scrapbookConfig;
-  const [stage, setStage] = useState(skipIntro ? INTRO_STAGES.QUESTION : INTRO_STAGES.GREETING);
+  const [stage, setStage] = useState(skipIntro ? INTRO_STAGES.QUESTION : INTRO_STAGES.OPENING_BOOK);
 
   useEffect(() => {
-    if (stage === INTRO_STAGES.GREETING) {
+    if (stage === INTRO_STAGES.OPENING_BOOK) {
       sounds.playPageTurn();
       const timer = setTimeout(() => {
+        setStage(INTRO_STAGES.GREETING);
+      }, 1200);
+      return () => clearTimeout(timer);
+    } else if (stage === INTRO_STAGES.GREETING) {
+      const timer = setTimeout(() => {
         setStage(INTRO_STAGES.REVEAL);
-      }, 1400);
+      }, 1300);
       return () => clearTimeout(timer);
     } else if (stage === INTRO_STAGES.REVEAL) {
       const timer = setTimeout(() => {
         setStage(INTRO_STAGES.PROMPT);
-      }, 1400);
+      }, 1300);
       return () => clearTimeout(timer);
     } else if (stage === INTRO_STAGES.PROMPT) {
       const timer = setTimeout(() => {
         setStage(INTRO_STAGES.QUESTION);
-      }, 1600);
+      }, 1400);
       return () => clearTimeout(timer);
     }
   }, [stage]);
@@ -59,6 +65,7 @@ export const OpeningQuestionPage = ({ onYes, onNo, skipIntro = false }) => {
     onNo();
   };
 
+  const openingBookText = openingPage.introOpening || "Opening your scrapbook… 📖";
   const greetingText = openingPage.introGreeting || `Hey ${recipientName || "Khushi didi"}… 👀`;
   const revealText = openingPage.introSubtitle || "I made something for you.";
   const promptText = openingPage.introPrompt || "But first, answer one very important question…";
@@ -71,7 +78,50 @@ export const OpeningQuestionPage = ({ onYes, onNo, skipIntro = false }) => {
     >
       <AnimatePresence mode="wait">
         {/* ========================================================================= */}
-        {/* STAGE 0: GREETING ("Hey Khushi didi… 👀") */}
+        {/* STAGE 0: OPENING BOOK ("Opening your scrapbook… 📖") */}
+        {/* ========================================================================= */}
+        {stage === INTRO_STAGES.OPENING_BOOK && (
+          <motion.div
+            key="stage-opening-book"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.05 }}
+            transition={{ duration: 0.25 }}
+            className="w-full h-full flex flex-col justify-between items-center"
+          >
+            {/* Top Washi Tape */}
+            <div className="relative pt-2 flex flex-col items-center">
+              <WashiTape color="gingham" rotate="-1deg" width="w-24" />
+            </div>
+
+            {/* Center Scrapbook Icon & Paper Flip */}
+            <div className="relative my-auto flex flex-col justify-center items-center py-2">
+              <motion.div
+                animate={{ rotate: [-2, 2, -2], y: [0, -4, 0] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+                className="relative bg-white/90 p-4 rounded-2xl border-2 border-dashed border-[#C92A2A]/50 shadow-scrapbook"
+              >
+                <span className="text-4xl sm:text-5xl block mb-2">📖</span>
+                <p className="font-handwriting text-2xl sm:text-3xl text-[#C92A2A] font-bold">
+                  {openingBookText}
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Bottom Skip Indicator */}
+            <div className="w-full pb-2 flex justify-center z-20">
+              <button
+                onClick={handleSkip}
+                className="font-patrick text-xs text-neutral-500 hover:text-neutral-800 bg-amber-100/60 hover:bg-amber-100 px-3 py-1 rounded-full border border-amber-300/60 transition-all cursor-pointer active:scale-95"
+              >
+                {openingPage.skipText || "Skip ➔"}
+              </button>
+            </div>
+          </motion.div>
+        )}
+
+        {/* ========================================================================= */}
+        {/* STAGE 1: GREETING ("Hey Khushi didi… 👀") */}
         {/* ========================================================================= */}
         {stage === INTRO_STAGES.GREETING && (
           <motion.div

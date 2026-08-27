@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { referenceAssets } from '../../config/referenceAssets';
 import { scrapbookConfig } from '../../config/scrapbookData';
 import { WashiTape } from '../ui/ScrapbookDecorations';
@@ -7,30 +7,47 @@ import { sounds } from '../../utils/audio';
 
 export const MemoriesPage = ({ onNext }) => {
   const { memoriesPage } = scrapbookConfig;
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const handleNext = () => {
     sounds.playPageTurn();
     onNext();
   };
 
+  const handlePhotoClick = (photo) => {
+    sounds.playPop();
+    setSelectedPhoto(photo);
+  };
+
+  const handleCloseModal = () => {
+    sounds.playClick();
+    setSelectedPhoto(null);
+  };
+
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-2.5 sm:p-3 select-none overflow-hidden">
-      {/* Title */}
+      {/* Title & Tap Hint */}
       <div className="w-full text-center pt-0.5 z-20">
         <h1 className="font-abril text-2xl sm:text-3xl text-[#C92A2A] tracking-widest drop-shadow-sm">
           {memoriesPage.title}
         </h1>
+        <p className="font-handwriting text-xs text-neutral-500 mt-0.5">
+          {memoriesPage.tapHint || "Tap any photo to read the note 📝"}
+        </p>
       </div>
 
       {/* 5-Photo Balanced Full-Height Scrapbook Collage */}
-      <div className="relative w-full flex-1 my-1 min-h-[420px] overflow-hidden">
+      <div className="relative w-full flex-1 my-1 min-h-[410px] overflow-hidden">
         
         {/* Tier 1 - Left: Photo 1 (Childhood Throwback) */}
         <motion.div
+          onClick={() => handlePhotoClick(memoriesPage.photos[0])}
+          whileHover={{ scale: 1.04, zIndex: 30 }}
+          whileTap={{ scale: 0.98 }}
           initial={{ opacity: 0, rotate: -6, scale: 0.95 }}
           animate={{ opacity: 1, rotate: -3, scale: 1 }}
           transition={{ duration: 0.35 }}
-          className="absolute top-1 left-1 w-[46%] max-w-[155px] bg-white p-1.5 pb-2 rounded-sm shadow-polaroid border border-neutral-200 z-10"
+          className="absolute top-1 left-1 w-[46%] max-w-[155px] bg-white p-1.5 pb-2 rounded-sm shadow-polaroid border border-neutral-200 z-10 cursor-pointer"
         >
           <div className="absolute -top-2 left-1/2 -translate-x-1/2 pointer-events-none z-20">
             <WashiTape color="yellow" width="w-12" rotate="-2deg" />
@@ -49,10 +66,13 @@ export const MemoriesPage = ({ onNext }) => {
 
         {/* Tier 1 - Right: Photo 2 (Partners in Crime) */}
         <motion.div
+          onClick={() => handlePhotoClick(memoriesPage.photos[1])}
+          whileHover={{ scale: 1.04, zIndex: 30 }}
+          whileTap={{ scale: 0.98 }}
           initial={{ opacity: 0, rotate: 6, scale: 0.95 }}
           animate={{ opacity: 1, rotate: 3, scale: 1 }}
           transition={{ duration: 0.35, delay: 0.08 }}
-          className="absolute top-1 right-1 w-[46%] max-w-[155px] bg-white p-1.5 pb-2 rounded-sm shadow-polaroid border border-neutral-200 z-10"
+          className="absolute top-1 right-1 w-[46%] max-w-[155px] bg-white p-1.5 pb-2 rounded-sm shadow-polaroid border border-neutral-200 z-10 cursor-pointer"
         >
           <div className="absolute -top-2 left-1/2 -translate-x-1/2 pointer-events-none z-20">
             <WashiTape color="pink" width="w-12" rotate="2deg" />
@@ -71,10 +91,13 @@ export const MemoriesPage = ({ onNext }) => {
 
         {/* Tier 2 - Left: Photo 3 (Forever Smiling) */}
         <motion.div
+          onClick={() => handlePhotoClick(memoriesPage.photos[2])}
+          whileHover={{ scale: 1.04, zIndex: 30 }}
+          whileTap={{ scale: 0.98 }}
           initial={{ opacity: 0, rotate: -5, scale: 0.95 }}
           animate={{ opacity: 1, rotate: -2, scale: 1 }}
           transition={{ duration: 0.35, delay: 0.15 }}
-          className="absolute top-[35%] left-1 w-[46%] max-w-[155px] bg-white p-1.5 pb-2 rounded-sm shadow-polaroid border border-neutral-200 z-10"
+          className="absolute top-[35%] left-1 w-[46%] max-w-[155px] bg-white p-1.5 pb-2 rounded-sm shadow-polaroid border border-neutral-200 z-10 cursor-pointer"
         >
           <div className="absolute -top-2 left-1/2 -translate-x-1/2 pointer-events-none z-20">
             <WashiTape color="mint" width="w-12" rotate="-2deg" />
@@ -93,10 +116,13 @@ export const MemoriesPage = ({ onNext }) => {
 
         {/* Tier 2 - Right: Photo 4 (Unmatched Chaos) */}
         <motion.div
+          onClick={() => handlePhotoClick(memoriesPage.photos[3])}
+          whileHover={{ scale: 1.04, zIndex: 30 }}
+          whileTap={{ scale: 0.98 }}
           initial={{ opacity: 0, rotate: 5, scale: 0.95 }}
           animate={{ opacity: 1, rotate: 2, scale: 1 }}
           transition={{ duration: 0.35, delay: 0.22 }}
-          className="absolute top-[35%] right-1 w-[46%] max-w-[155px] bg-white p-1.5 pb-2 rounded-sm shadow-polaroid border border-neutral-200 z-10"
+          className="absolute top-[35%] right-1 w-[46%] max-w-[155px] bg-white p-1.5 pb-2 rounded-sm shadow-polaroid border border-neutral-200 z-10 cursor-pointer"
         >
           <div className="absolute -top-2 left-1/2 -translate-x-1/2 pointer-events-none z-20">
             <WashiTape color="red" width="w-12" rotate="3deg" />
@@ -125,10 +151,13 @@ export const MemoriesPage = ({ onNext }) => {
 
         {/* Tier 3 - Left/Center: Photo 5 (Cutest Sister Ever) */}
         <motion.div
+          onClick={() => handlePhotoClick(memoriesPage.photos[4])}
+          whileHover={{ scale: 1.04, zIndex: 30 }}
+          whileTap={{ scale: 0.98 }}
           initial={{ opacity: 0, rotate: -4, scale: 0.95 }}
           animate={{ opacity: 1, rotate: -2, scale: 1 }}
           transition={{ duration: 0.35, delay: 0.3 }}
-          className="absolute bottom-1 left-2 w-[48%] max-w-[165px] bg-white p-1.5 pb-2 rounded-sm shadow-polaroid border border-neutral-200 z-10"
+          className="absolute bottom-1 left-2 w-[48%] max-w-[165px] bg-white p-1.5 pb-2 rounded-sm shadow-polaroid border border-neutral-200 z-10 cursor-pointer"
         >
           <div className="absolute -top-2 left-1/2 -translate-x-1/2 pointer-events-none z-20">
             <WashiTape color="yellow" width="w-12" rotate="-1deg" />
@@ -168,6 +197,66 @@ export const MemoriesPage = ({ onNext }) => {
           {memoriesPage.nextButtonText}
         </button>
       </div>
+
+      {/* Interactive Photo Note Inspection Modal */}
+      <AnimatePresence>
+        {selectedPhoto && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={handleCloseModal}
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-3"
+          >
+            <motion.div
+              initial={{ scale: 0.85, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.85, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-[320px] bg-white p-3 pb-4 rounded-xl shadow-2xl border-2 border-neutral-200"
+            >
+              {/* Close Button */}
+              <button
+                onClick={handleCloseModal}
+                className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-neutral-900 text-white font-patrick text-sm font-bold flex items-center justify-center shadow-lg border border-neutral-700 hover:bg-neutral-800 active:scale-95 cursor-pointer z-30"
+              >
+                ✕
+              </button>
+
+              {/* Top Washi Tape */}
+              <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 pointer-events-none z-20">
+                <WashiTape color={selectedPhoto.tapeColor || "yellow"} width="w-20" rotate="-2deg" />
+              </div>
+
+              {/* Photo */}
+              <div className="w-full aspect-[4/3] bg-neutral-100 overflow-hidden rounded-md border border-neutral-200 mt-2">
+                <img
+                  src={selectedPhoto.src}
+                  alt={selectedPhoto.caption}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Caption */}
+              <p className="font-patrick text-base font-bold text-neutral-900 text-center mt-2">
+                {selectedPhoto.caption}
+              </p>
+
+              {/* Secret Sibling Note */}
+              {selectedPhoto.note && (
+                <div className="mt-3 p-2.5 bg-amber-50/90 rounded-lg border border-amber-200 shadow-inner text-left">
+                  <p className="font-handwriting text-sm sm:text-base text-[#C92A2A] font-bold leading-snug">
+                    📝 Note:
+                  </p>
+                  <p className="font-patrick text-xs sm:text-sm text-neutral-700 mt-0.5 leading-relaxed">
+                    {selectedPhoto.note}
+                  </p>
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

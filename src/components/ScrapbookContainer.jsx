@@ -27,15 +27,25 @@ export const ScrapbookContainer = ({
 
   return (
     <main className="relative min-h-screen w-full flex items-center justify-center p-2 sm:p-4 overflow-hidden bg-[#241711]">
-      {/* Sound Toggle (Discreet in top-right corner) */}
-      <div className="fixed top-3 right-3 z-50">
+      {/* Sound Toggle (Scrapbook Taped Paper Badge in top-right corner) */}
+      <div className="fixed top-2.5 right-2.5 sm:top-4 sm:right-4 z-50">
         <button
           onClick={handleToggleSound}
-          className="p-2 rounded-full bg-neutral-900/60 hover:bg-neutral-900/90 text-amber-200 hover:text-white backdrop-blur-sm transition-all cursor-pointer shadow-md border border-neutral-700/50 active:scale-95"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50/95 hover:bg-amber-100 text-neutral-800 font-patrick text-xs font-bold backdrop-blur-sm transition-all cursor-pointer shadow-md border border-amber-300/80 active:scale-95 select-none"
           title={soundActive ? "Mute Sound" : "Enable Sound & Music"}
-          aria-label="Toggle Sound"
+          aria-label={soundActive ? "Mute Sound" : "Enable Sound"}
         >
-          {soundActive ? <Volume2 size={16} /> : <VolumeX size={16} />}
+          {soundActive ? (
+            <>
+              <Volume2 size={13} className="text-[#C92A2A]" />
+              <span>Sound On 🎵</span>
+            </>
+          ) : (
+            <>
+              <VolumeX size={13} className="text-neutral-500" />
+              <span>Muted 🔇</span>
+            </>
+          )}
         </button>
       </div>
 

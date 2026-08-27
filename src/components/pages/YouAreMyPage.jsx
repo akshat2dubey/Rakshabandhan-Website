@@ -136,24 +136,38 @@ export const YouAreMyPage = ({ onBack }) => {
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="absolute bottom-1 left-1/2 -translate-x-1/2 z-20 text-center"
+          transition={{ delay: 0.35 }}
+          className="absolute bottom-11 left-1/2 -translate-x-1/2 z-20 text-center"
         >
-          <svg className="w-6 h-6 overflow-visible mx-auto mb-0.5" fill="none">
-            <path d="M 3 18 L 3 2" stroke="#BE185D" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
-            <polygon points="3,2 0,7 6,7" fill="#BE185D" />
+          <svg className="w-6 h-5 overflow-visible mx-auto mb-0.5" fill="none">
+            <path d="M 3 14 L 3 2" stroke="#BE185D" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+            <polygon points="3,2 0,6 6,6" fill="#BE185D" />
           </svg>
-          <span className="font-patrick text-lg sm:text-xl font-bold text-pink-900 inline-block bg-pink-100 px-3 py-0.5 rounded-full border border-pink-300 shadow-sm">
-            bestie ✨
+          <span className="font-patrick text-base sm:text-lg font-bold text-pink-900 inline-block bg-pink-100 px-3 py-0.5 rounded-full border border-pink-300 shadow-sm">
+            bestie ❤️
           </span>
         </motion.div>
+
+        {/* 8. Soft Final Emotional Touch (...and somehow, still one of my favourite people) */}
+        {youAreMyPage.finalNote && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6, ease: "easeOut" }}
+            className="absolute bottom-1 left-1/2 -translate-x-1/2 z-20 text-center w-full px-4"
+          >
+            <p className="font-handwriting text-sm sm:text-base text-[#C92A2A] font-bold bg-white/90 px-3 py-0.5 rounded-full border border-[#C92A2A]/30 shadow-sm inline-block">
+              {youAreMyPage.finalNote}
+            </p>
+          </motion.div>
+        )}
       </div>
 
       {/* Back Button */}
       <div className="w-full pt-1 flex justify-center pb-2 z-30">
         <button
           onClick={handleBack}
-          className="w-full max-w-[240px] py-2.5 px-4 rounded-full bg-neutral-800 hover:bg-neutral-700 active:scale-95 text-white font-patrick text-base font-bold shadow-md transition-all cursor-pointer"
+          className="w-full max-w-[240px] py-2 px-4 rounded-full bg-neutral-800 hover:bg-neutral-700 active:scale-95 text-white font-patrick text-sm sm:text-base font-bold shadow-md transition-all cursor-pointer"
         >
           {youAreMyPage.backButtonText}
         </button>

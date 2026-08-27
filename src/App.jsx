@@ -125,6 +125,7 @@ export function App() {
       {currentPage === PAGE_KEYS.FINAL_REVEAL && (
         <FinalRevealPage
           onRestart={handleRestart}
+          onReadLetter={() => setCurrentPage(PAGE_KEYS.LETTER)}
         />
       )}
     </ScrapbookContainer>
