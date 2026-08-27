@@ -176,12 +176,16 @@ export const scrapbookConfig = {
   letterPage: {
     title: "A Little Note...",
     paragraphs: [
-      "Dear Khushi didi,",
-      "Thank you for always being there, making every single day brighter with your smiles and chaotic energy.",
-      "No matter how much time passes, you will always be my absolute favorite person in the world.",
-      "With all my love & hugs,"
+      "Dear Didi ❤️,",
+      "Badi Didi basically life ki **pehli friend, pehli teacher, part-time parent aur full-time headache** hoti hai. 😂 Bachpan se lekar ab tak chhoti-chhoti baaton pe ladna, ek dusre ko irritate karna, aur phir secretly ek dusre ka support karna — ye sab toh package mein free mila tha. 😂",
+      "Apne mujhe annoy bhi kiya hai, daanta bhi hai, protect bhi kiya hai, aur somehow itna sab karne ke baad bhi meri favourite people mein se ek ho. 🫶😂",
+      "No matter how much we fight or irritate each other, you’ll always be one of the most special people in my life. ❤️ After all, **first friend toh first friend hota hai**, replacement thodi mil sakta hai. 😌",
+      "Thank you for always being there, meri first friend, meri forever partner-in-crime, aur woh person jo mujhe trouble mein padne se pehle hi bata deti hai ki “haan, tu kuch gadbad karne wala hai.” 😂❤️",
+      "And now that we’ve had our emotional Raksha Bandhan moment…",
+      "**Gift toh de diya hai, ab please ₹500 wapas kar do.** 😭😂\nBhai-behen ka pyaar apni jagah, lekin **financial settlement bhi zaroori hai.** 💀"
     ],
-    signature: "Yours beloved Bhai Om ❤️",
+    closing: "Yours lovingly (and financially concerned),",
+    signature: "Om ❤️",
     backButtonText: "Back to Gifts 🎁"
   },
 
