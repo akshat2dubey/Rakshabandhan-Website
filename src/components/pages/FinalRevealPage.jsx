@@ -75,17 +75,17 @@ export const FinalRevealPage = ({ onRestart, onReadLetter }) => {
 
           {/* Sparkling Shin-chan Artwork (Cheeky / Curious) */}
           <div className="relative my-auto flex flex-col justify-center items-center py-2">
-            <motion.img
-              src={referenceAssets.shinchanSparkle}
-              alt="Sparkle Shin-chan"
-              className="w-52 h-52 sm:w-60 sm:h-60 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: [0.98, 1.03, 0.98], opacity: 1 }}
-              transition={{ 
-                scale: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
-                opacity: { duration: 0.35 }
-              }}
-            />
+            <motion.div
+              animate={{ scale: [0.97, 1.03, 0.97] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="relative"
+            >
+              <img
+                src={referenceAssets.shinchanSparkle}
+                alt="Sparkle Shin-chan"
+                className="w-52 h-52 sm:w-60 sm:h-60 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
+              />
+            </motion.div>
           </div>
 
           {/* Interactive Dual YES Buttons (Both Clickable & Celebrate!) */}
