@@ -209,7 +209,7 @@ export const scrapbookConfig = {
     preRevealText: "Okay… one last thing.",
     question: "Do you wanna see it?",
     yesButtonText: "YES ❤️",
-    noButtonText: "NO 🙄",
+    secondYesButtonText: "YES ✨",
     mainCelebration: "Happy Rakshabandhan, Khushi Didi! ❤️✨",
     fromSignature: "— Bhai Om",
     smallNote: "Made with love ❤️",

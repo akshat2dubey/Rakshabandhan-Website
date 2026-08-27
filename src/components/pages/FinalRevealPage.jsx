@@ -42,10 +42,6 @@ export const FinalRevealPage = ({ onRestart, onReadLetter }) => {
     setIsRevealed(true);
   };
 
-  const handleNo = () => {
-    sounds.playAngry();
-  };
-
   const handleRestart = () => {
     sounds.playClick();
     setIsRevealed(false);
@@ -89,7 +85,7 @@ export const FinalRevealPage = ({ onRestart, onReadLetter }) => {
             />
           </div>
 
-          {/* Interactive YES / NO Buttons */}
+          {/* Interactive Dual YES Buttons (Both Clickable & Celebrate!) */}
           <div className="w-full max-w-[280px] flex gap-3 items-center justify-center pb-3 z-20">
             <button
               onClick={handleYes}
@@ -99,10 +95,10 @@ export const FinalRevealPage = ({ onRestart, onReadLetter }) => {
             </button>
 
             <button
-              onClick={handleNo}
-              className="flex-1 py-3 px-4 rounded-full bg-[#F2ECE0] hover:bg-[#E6DEC8] active:scale-95 text-neutral-700 font-patrick text-xl font-bold shadow-md hover:shadow-lg transition-all duration-150 border-2 border-neutral-300 cursor-pointer"
+              onClick={handleYes}
+              className="flex-1 py-3 px-4 rounded-full bg-[#F2ECE0] hover:bg-[#E6DEC8] active:scale-95 text-[#C92A2A] font-patrick text-xl font-bold shadow-md hover:shadow-lg transition-all duration-150 border-2 border-[#C92A2A]/40 cursor-pointer animate-pulse"
             >
-              {finalQuestionPage.noButtonText || "NO 🙄"}
+              {finalQuestionPage.secondYesButtonText || "YES ✨"}
             </button>
           </div>
         </>
