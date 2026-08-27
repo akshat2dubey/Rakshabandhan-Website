@@ -155,8 +155,8 @@ export const FinalRevealPage = ({ onRestart, onReadLetter }) => {
               </motion.span>
 
               <img
-                src={referenceAssets.shinchanSparkle}
-                alt="Sparkle Shin-chan Finale"
+                src={referenceAssets.shinchanCelebration || referenceAssets.shinchanSparkle}
+                alt="Excited Shin-chan Celebration"
                 className="w-48 h-48 sm:w-56 sm:h-56 object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.22)]"
               />
             </motion.div>

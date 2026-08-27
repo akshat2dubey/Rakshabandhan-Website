@@ -13,6 +13,7 @@ export const referenceAssets = {
   shinchanCenter: "/assets/shinchan/shinchan-center.png",
   shinchanSparkle: "/assets/shinchan/shinchan-sparkle.png",
   shinchanShy: "/assets/shinchan/shinchan-shy.png",
+  shinchanCelebration: "/assets/shinchan/shinchan-celebration.png",
 
   // Sidekick Stickers
   shiro: "/assets/shinchan/shiro.png",
