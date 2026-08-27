@@ -58,25 +58,28 @@ export const HeartfeltLetterPage = ({ onBack }) => {
             ))}
           </div>
 
-          {/* Closing & Signature */}
-          <div className="mt-5 pt-3 border-t border-dashed border-amber-300/60 text-right space-y-1">
-            {letterPage.closing && (
-              <p className="font-handwriting text-base sm:text-lg text-neutral-600 italic">
-                {renderFormattedText(letterPage.closing)}
-              </p>
-            )}
-            <p className="font-patrick text-xl sm:text-2xl font-bold text-[#C92A2A] tracking-wide">
-              {renderFormattedText(letterPage.signature)}
-            </p>
-          </div>
+          {/* Closing & Signature with Mini Shin-chan Sticker (No Text Overlap) */}
+          <div className="mt-4 pt-3 border-t border-dashed border-amber-300/60 flex items-end justify-between">
+            {/* Cute mini Shin-chan sticker */}
+            <div className="pointer-events-none -mb-1">
+              <img 
+                src={referenceAssets.shinchanShy} 
+                alt="Shy Shin-chan" 
+                className="w-12 h-12 sm:w-14 sm:h-14 object-contain filter drop-shadow-[0_2px_5px_rgba(0,0,0,0.12)] transform -rotate-3"
+              />
+            </div>
 
-          {/* Shy Blushing Shin-chan Sticker Bottom Left */}
-          <div className="relative mt-2 flex items-center justify-start pointer-events-none">
-            <img 
-              src={referenceAssets.shinchanShy} 
-              alt="Shy Shin-chan" 
-              className="w-20 h-20 sm:w-24 sm:h-24 object-contain filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.18)] transform -rotate-6"
-            />
+            {/* Closing & Signature */}
+            <div className="text-right space-y-0.5">
+              {letterPage.closing && (
+                <p className="font-handwriting text-sm sm:text-base text-neutral-600 italic">
+                  {renderFormattedText(letterPage.closing)}
+                </p>
+              )}
+              <p className="font-patrick text-lg sm:text-xl font-bold text-[#C92A2A] tracking-wide">
+                {renderFormattedText(letterPage.signature)}
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>
