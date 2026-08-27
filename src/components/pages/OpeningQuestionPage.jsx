@@ -22,22 +22,22 @@ export const OpeningQuestionPage = ({ onYes, onNo, skipIntro = false }) => {
       sounds.playPageTurn();
       const timer = setTimeout(() => {
         setStage(INTRO_STAGES.GREETING);
-      }, 1200);
+      }, 4000);
       return () => clearTimeout(timer);
     } else if (stage === INTRO_STAGES.GREETING) {
       const timer = setTimeout(() => {
         setStage(INTRO_STAGES.REVEAL);
-      }, 1300);
+      }, 4000);
       return () => clearTimeout(timer);
     } else if (stage === INTRO_STAGES.REVEAL) {
       const timer = setTimeout(() => {
         setStage(INTRO_STAGES.PROMPT);
-      }, 1300);
+      }, 4000);
       return () => clearTimeout(timer);
     } else if (stage === INTRO_STAGES.PROMPT) {
       const timer = setTimeout(() => {
         setStage(INTRO_STAGES.QUESTION);
-      }, 1400);
+      }, 4000);
       return () => clearTimeout(timer);
     }
   }, [stage]);
