@@ -1,5 +1,3 @@
-import { referenceAssets } from './referenceAssets';
-
 /**
  * USER CUSTOMIZABLE CONFIGURATION & REPLACEMENT MAP
  */
@@ -10,8 +8,13 @@ export const scrapbookConfig = {
   senderName: "Bhai Om",
   relationshipTitle: "Best Sister",
 
-  // 2. Opening Page (0.0s - 5.5s)
+  // 2. Opening Page & Personal Intro Sequence
   openingPage: {
+    introGreeting: "Hey Khushi didi… 👀",
+    introSubtitle: "I made something for you.",
+    introPrompt: "But first, answer one very important question…",
+    senderBadge: "From Bhai Om ❤️",
+    skipText: "Skip ➔",
     question: "Do you know what today is?",
     yesButtonText: "YES ❤️",
     noButtonText: "NO 🙄"

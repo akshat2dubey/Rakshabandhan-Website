@@ -26,6 +26,7 @@ const PAGE_KEYS = {
 export function App() {
   const [currentPage, setCurrentPage] = useState(PAGE_KEYS.OPENING);
   const [openedGifts, setOpenedGifts] = useState([]);
+  const [skipIntro, setSkipIntro] = useState(false);
 
   // Auto initialize Web Audio on first user gesture
   useEffect(() => {
@@ -56,6 +57,7 @@ export function App() {
 
   const handleRestart = () => {
     setOpenedGifts([]);
+    setSkipIntro(false);
     setCurrentPage(PAGE_KEYS.OPENING);
   };
 
@@ -63,14 +65,21 @@ export function App() {
     <ScrapbookContainer pageKey={currentPage}>
       {currentPage === PAGE_KEYS.OPENING && (
         <OpeningQuestionPage
-          onYes={() => setCurrentPage(PAGE_KEYS.ARE_YOU_REALLY)}
+          skipIntro={skipIntro}
+          onYes={() => {
+            setSkipIntro(false);
+            setCurrentPage(PAGE_KEYS.ARE_YOU_REALLY);
+          }}
           onNo={() => setCurrentPage(PAGE_KEYS.HOW_DARE_YOU)}
         />
       )}
 
       {currentPage === PAGE_KEYS.HOW_DARE_YOU && (
         <HowDareYouPage
-          onRetry={() => setCurrentPage(PAGE_KEYS.OPENING)}
+          onRetry={() => {
+            setSkipIntro(true);
+            setCurrentPage(PAGE_KEYS.OPENING);
+          }}
         />
       )}
 
